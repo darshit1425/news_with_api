@@ -26,13 +26,13 @@ class ArticleModel {
 
   ArticleModel(
       {this.author,
-        this.title,
-        this.desc,
-        this.url,
-        this.urltoimg,
-        this.publishedAt,
-        this.content,
-        this.s1});
+      this.title,
+      this.desc,
+      this.url,
+      this.urltoimg,
+      this.publishedAt,
+      this.content,
+      this.s1});
 
   ArticleModel articalFromJson(Map m1) {
     author = m1['author'];
@@ -71,4 +71,3 @@ class SourceModel {
     return s1;
   }
 }
-
