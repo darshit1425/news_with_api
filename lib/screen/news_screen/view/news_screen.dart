@@ -11,11 +11,11 @@ class News_screen extends StatefulWidget {
 
 class _News_screenState extends State<News_screen> {
   @override
-  void initState() {
-    // TODO: implement initState
-    Provider.of<News_Provider>(context, listen: false).NewsApiCall();
-    super.initState();
-  }
+  // void initState() {
+  //   // TODO: implement initState
+  //   Provider.of<News_Provider>(context, listen: false).NewsApiCall();
+  //   super.initState();
+  // }
 
   News_Provider? ProviderT;
   News_Provider? ProviderF;
@@ -69,31 +69,39 @@ class _News_screenState extends State<News_screen> {
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    // leading: Text("${ProviderT!.NewsList![index].author}"),
-                    title: Text("${ProviderT!.NewsList![index].author}",style: TextStyle(color: Colors.white),),
-                    // trailing: ,
-
-                    // "${ProviderT!.NewsList![index].url}"),
-                    subtitle: Text("${ProviderT!.NewsList![index].title}",style: TextStyle(color: Colors.grey.shade400)),
-
-                  leading: Container(
-                      height: double.infinity,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.white,
-                        border: Border.all(color: Colors.purple.shade100, width: 2),
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "1", arguments: index);
+                    },
+                    child: ListTile(
+                      // leading: Text("${ProviderT!.NewsList![index].author}"),
+                      title: Text(
+                        "${ProviderT!.NewsList![index].author}",
+                        style: TextStyle(color: Colors.white),
                       ),
-                      child: Image.network(
+                      // trailing: ,
 
-                        "${ProviderT!.NewsList[index].urltoimg}",
-                        fit: BoxFit.contain,
+                      // "${ProviderT!.NewsList![index].url}"),
+                      subtitle: Text("${ProviderT!.NewsList![index].title}",
+                          style: TextStyle(color: Colors.grey.shade400)),
 
+                      leading: Container(
+                        height: double.infinity,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Colors.purple.shade100, width: 2),
+                        ),
+                        child: Image.network(
+                          "${ProviderT!.NewsList[index].urltoimg}",
+                          fit: BoxFit.contain,
+                        ),
                       ),
+
+                      // trailing: Container(child: Text("${ProviderT!.NewsList[index].name}")),
                     ),
-
-                    // trailing: Container(child: Text("${ProviderT!.NewsList[index].name}")),
                   );
 
                   //   ListTile(
