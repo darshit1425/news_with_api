@@ -6,6 +6,13 @@ import 'package:http/http.dart' as http;
 
 class India_Provider extends ChangeNotifier {
   NewsModel? newsModel;
+  String SelectedContry='in';
+
+  void ChangeContry(String Country) {
+    SelectedContry= Country;
+    notifyListeners();
+
+  }
   ApiHelper apiHelper = ApiHelper();
 
   Future<NewsModel> getNews(String country) async {
@@ -13,9 +20,19 @@ class India_Provider extends ChangeNotifier {
 
     newsModel = news;
 
-
     return news;
   }
+
   notifyListeners();
+
+  // ApiHelper apiHelper = ApiHelper();
+  //
+  // Future<NewsModel> getNews() async {
+  //   NewsModel n1 = await apiHelper.newsApi("in");
+  //
+  //   newsModel = n1;
+  //
+  //   return n1;
+
 
 }
